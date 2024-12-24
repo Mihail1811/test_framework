@@ -7,5 +7,5 @@ class NBSPPage(BasePage):
         super().__init__(driver, timeout=60)
         self.my_btn = (By.XPATH, '//button[text()="My\u00A0Button"]')
 
-    def present_my_button(self):
+    def present_my_button(self) -> bool:
         return self.check_existence_element(self.my_btn)

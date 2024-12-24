@@ -10,5 +10,5 @@ class LoadDelayPage(BasePage):
             '//div[@class="container"]//button[@type="button"]'
         )
 
-    def present_button_after_delay(self):
+    def present_button_after_delay(self) -> bool:
         return self.check_existence_element(self.btn_after_delay)

@@ -11,11 +11,11 @@ class DynamicTablePage(BasePage):
             '//span[parent::div/span/text()="Chrome"]'
         )
 
-    def get_cpu_value_table(self):
+    def get_cpu_value_table(self) -> str:
         rows = self.find_elements(*self.cpu_value_table)
         for count in range(5):
             if rows[count].text[-1] == '%':
                 return rows[count].text
 
-    def get_highlighted_value_cpu(self):
+    def get_highlighted_value_cpu(self) -> str:
         return self.get_text(self.highlighted_value_cpu).split()[-1]

@@ -10,13 +10,13 @@ class TextInputPage(BasePage):
         self.updating_btn = (By.ID, 'updatingButton')
 
     @allure.step(r'Ввести в поле ввода новое имя кнопки')
-    def input_new_name_button(self, text):
+    def input_new_name_button(self, text: str) -> None:
         self.fill_field(self.new_btn_name, text)
 
     @allure.step(r'Получить значение кнопки')
-    def get_name_button(self):
+    def get_name_button(self) -> str:
         return self.get_text(self.updating_btn)
 
     @allure.step(r'Нажать на кнопку с первоначальным названием')
-    def click_original_button(self):
+    def click_original_button(self) -> None:
         self.click_element(self.updating_btn)

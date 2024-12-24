@@ -28,22 +28,22 @@ class MainPage(BasePage):
         )
 
     @allure.step(r'Найти ссылку(Progress Bar) и нажать на нее')
-    def click_link_progress_bar(self):
+    def click_link_progress_bar(self) -> None:
         self.click_element(self.link_progress_bar)
 
     @allure.step(r'Найти ссылку(Load Delay), '
                  r'нажать на нее и ждать, пока загрузится страница')
-    def click_link_load_delay(self):
+    def click_link_load_delay(self) -> None:
         self.click_element(self.link_load_delay)
 
     @allure.step(r'Найти ссылку(Text Input) и нажать на нее')
-    def click_link_text_input(self):
+    def click_link_text_input(self) -> None:
         self.click_element(self.link_text_input)
 
     @allure.step(r'Найти ссылку(Dynamic Table) и нажать на нее')
-    def click_link_dynamic_table(self):
+    def click_link_dynamic_table(self) -> None:
         self.click_element(self.link_dynamic_table)
 
     @allure.step(r'Найти ссылку(Non-Breaking Space) и нажать на нее')
-    def click_link_unbroken_space(self):
+    def click_link_unbroken_space(self) -> None:
         self.click_element(self.link_unbroken_space)
