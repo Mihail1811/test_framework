@@ -1,7 +1,9 @@
+from typing import List
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
+
 
 
 class BasePage:
@@ -10,7 +12,7 @@ class BasePage:
         self.timeout = int(timeout)
         self.wait = WebDriverWait(driver, timeout)
 
-    def find_element(self, by: By or int, value: str) -> WebElement:
+    def find_element(self, by: By, value: str) -> WebElement:
         """
         Находит один элемент на странице
         :param by: Способ поиска локаторов
@@ -22,7 +24,7 @@ class BasePage:
                 (by, value)
             ), message=f'Элемент {by, value} не найден')
 
-    def find_elements(self, by: By or int, value: str) -> [WebElement]:
+    def find_elements(self, by: By, value: str) -> List[WebElement]:
         """
         Находит все элементы, соответствующие локатору, на странице
         :param by: Способ поиска локаторов
@@ -40,7 +42,11 @@ class BasePage:
         :param locator: Кортеж, определяющий локатор
         :return: True, если элемент присутствует и False, если нет
         """
-        return type(self.find_element(*locator)) == WebElement
+        try:
+            element = self.find_element(*locator)
+            return element.is_displayed()
+        except Exception:
+            return False
 
     def click_element(self, locator: tuple) -> None:
         """

@@ -7,6 +7,12 @@ from pages.DynamicTablePage import DynamicTablePage
 from pages.NBSPPage import NBSPPage
 
 
+@allure.title('Проверка работы Progress Bar')
+@allure.description('''
+Тест проверяет, что:
+1. Значение Result < 5;
+2. Значение Duration < 17000;
+''')
 def test_progress_bar(driver):
     main_page = MainPage(driver)
     main_page.click_link_progress_bar()
@@ -22,6 +28,12 @@ def test_progress_bar(driver):
             'Значение Duration больше 17000'
 
 
+@allure.title('Проверка отображения кнопки после загрузки страницы')
+@allure.description('''
+Шаги выполнения теста:
+1. Загрузка страницы с задержкой;
+2. Проверка, что кнопка отобразилась;
+''')
 def test_load_delay(driver):
     main_page = MainPage(driver)
     main_page.click_link_load_delay()
@@ -32,6 +44,13 @@ def test_load_delay(driver):
                True, 'Кнопка не отображается!'
 
 
+@allure.title('Проверка изменения названия кнокпи')
+@allure.description('''
+Шаги выполнения теста:
+1. Ввести текст в поле для ввода;
+2. Нажать кнопку;
+3. Удостовериться, что название до нажатия кнопки было одно, после - другое;
+''')
 def test_text_input(driver):
     main_page = MainPage(driver)
     main_page.click_link_text_input()
@@ -58,6 +77,14 @@ def test_text_input(driver):
             'Название кнопки изменилось'
 
 
+@allure.title(r'Проверка схожесть значений CPU в '
+              r'таблице и в выделенной желтым строке')
+@allure.description('''
+Шаги выполнения теста:
+1. Считать значение CPU для Chrome в таблице;
+2. Сравнить считанное значение со значением в
+выделенной желтым строке в точности до символа;
+''')
 def test_dynamic_table(driver):
     main_page = MainPage(driver)
     main_page.click_link_dynamic_table()
@@ -70,6 +97,11 @@ def test_dynamic_table(driver):
                'Значения не совпадают!'
 
 
+@allure.title(r'Проверка отображения кнопки с неразрывным пробелом')
+@allure.description('''
+Тест проверяет, что кнопка "My Button" с неразрывным
+пробелом отображается на странице
+''')
 def test_nbsp(driver):
     main_page = MainPage(driver)
     main_page.click_link_unbroken_space()
