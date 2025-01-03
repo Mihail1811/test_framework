@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.BasePage import BasePage
+from selenium.common.exceptions import NoSuchElementException
 
 
 class LoadDelayPage(BasePage):
@@ -11,4 +12,8 @@ class LoadDelayPage(BasePage):
         )
 
     def present_button_after_delay(self) -> bool:
-        return self.check_existence_element(self.btn_after_delay)
+        try:
+            self.check_existence_element(self.btn_after_delay)
+            return True
+        except NoSuchElementException:
+            raise AssertionError("Кнопка не появилась после задержки")

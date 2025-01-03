@@ -36,17 +36,14 @@ class BasePage:
                 (by, value)
             ), message=f'Элементы {by, value} не найдены')
 
-    def check_existence_element(self, locator: tuple) -> bool:
+    def check_existence_element(self, locator: tuple) -> None:
         """
         Проверяет, есть ли элемент на странице
         :param locator: Кортеж, определяющий локатор
-        :return: True, если элемент присутствует и False, если нет
+        :return: None. Вызывает AssertionError, если элемент не найден.
         """
-        try:
-            element = self.find_element(*locator)
-            return element.is_displayed()
-        except Exception:
-            return False
+        element = self.find_element(*locator)
+        assert element.is_displayed(), 'Элемент не найден!'
 
     def click_element(self, locator: tuple) -> None:
         """
