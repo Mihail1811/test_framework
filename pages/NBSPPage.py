@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from pages.BasePage import BasePage
 from selenium.common.exceptions import NoSuchElementException
+import allure
 
 
 class NBSPPage(BasePage):
@@ -8,9 +9,6 @@ class NBSPPage(BasePage):
         super().__init__(driver, timeout=60)
         self.my_btn = (By.XPATH, '//button[text()="My\u00A0Button"]')
 
-    def present_my_button(self) -> bool:
-        try:
-            self.check_existence_element(self.my_btn)
-            return True
-        except NoSuchElementException:
-            raise AssertionError("Кнопка не отображается!")
+    @allure.step('Проверить, что кнопка "My Button" отображается')
+    def present_my_button(self) -> None:
+        self.check_existence_element(self.my_btn)

@@ -43,10 +43,7 @@ def test_load_delay(driver):
     main_page = MainPage(driver)
     main_page.click_link_load_delay()
     load_delay_page = LoadDelayPage(driver)
-    with allure.step(r'Проверить, что кнопка "Button '
-                     r'Appearing After Delay" отображается'):
-        assert load_delay_page.present_button_after_delay() is \
-               True, 'Кнопка не отображается!'
+    load_delay_page.present_button_after_delay()
 
 
 @allure.title('Проверка изменения названия кнокпи')
@@ -116,5 +113,4 @@ def test_nbsp(driver):
     main_page = MainPage(driver)
     main_page.click_link_unbroken_space()
     nbsp_page = NBSPPage(driver)
-    with allure.step(r'Проверить, что кнопка "My Button" отображается'):
-        assert nbsp_page.present_my_button() is True, 'Кнопка не отображается!'
+    nbsp_page.present_my_button()
