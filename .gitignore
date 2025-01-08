@@ -1,0 +1,6 @@
+venv/
+.idea/
+.vscode/
+allure-results/
+allure-report/
+__pycache__/
